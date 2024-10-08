@@ -1,0 +1,21 @@
+<header>
+  Post <%= @post.id %>
+  <p>This is a post record from your database.</p>
+</header>
+
+<ul class="flex flex-col space-y-3 ">
+  <li class="border black p-2">
+    <strong>Title: <%= @post.title %></strong> <br /> Views: <%= @post.views %> <br />
+  </li>
+</ul>
+<.link href={~p"/posts/#{@post.id}/edit"} class="hover:underline">Edit</.link>
+<.link
+  href={~p"/posts/#{@post.id}"}
+  method="delete"
+  data-confirm="Are you sure?"
+  class="hover:underline"
+>
+  Delete
+</.link>
+
+<a href={~p"/posts"} class="text-blue-400">Back to Posts</a>

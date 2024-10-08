@@ -1,0 +1,28 @@
+<header>
+  Edit Product <%= @post.id %>
+  <p>Use this form to manage post records in your database.</p>
+</header>
+
+<.form for={@changeset} action={~p"/posts/#{@post}"} method="put">
+  <%= if @changeset.action do %>
+    <div class="error">
+      Oops, something went wrong! Please check the errors below.
+    </div>
+  <% end %>
+
+  <div class="flex flex-col">
+    <label for="title">Title</label>
+    <input type="text" id="title" name="post[title]" value={@changeset.data.title || ""} />
+  </div>
+
+  <div class="flex flex-col">
+    <label for="views">Views</label>
+    <input type="number" id="views" name="post[views]" value={@changeset.data.views || ""} />
+  </div>
+
+  <div class="text-blue-600">
+    <button type="submit">Save Product</button>
+  </div>
+</.form>
+
+<a href={~p"/posts"} class="text-blue-500">Back to posts</a>

@@ -1,0 +1,21 @@
+<h1>Listing Posts</h1>
+<a href={~p"/posts/new"} class="text-blue-400">Create New Post</a>
+<br />
+<ul class="flex flex-col space-y-3 ">
+  <%= for post <- @posts do %>
+    <.link href={~p"/posts/#{post.id}"}>
+      <li class="border black p-2 hover:bg-gray-200">
+        <strong>Title: <%= post.title %></strong> <br /> Views: <%= post.views %> <br />
+        <.link navigate={~p"/posts/#{post}/edit"} class="hover:underline">Edit</.link>
+        <.link
+          href={~p"/posts/#{post}"}
+          method="delete"
+          data-confirm="Are you sure?"
+          class="hover:underline"
+        >
+          Delete
+        </.link>
+      </li>
+    </.link>
+  <% end %>
+</ul>
